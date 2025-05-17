@@ -1,0 +1,132 @@
+.main{
+  flex: 1;
+  min-height: 100vh;
+  padding-bottom: 15vh;
+  position: relative;
+}
+
+.main .nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  padding: 20px;
+  color: rgb(37, 37, 37);
+  justify-content: space-between;
+}
+
+.main .nav img{
+  width: 40px;
+  border-radius: 50px;
+}
+
+.main-content{
+  /* max-width: 900px; */
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 20px;
+  /* color: aqua; */
+}
+
+.main .greet{
+  margin: 50px 0px;
+  font-size: 56px;
+  color: rgb(189, 184, 184);
+  font-weight: 500;
+  padding: 20px;
+}
+
+.main .greet span{
+  background: -webkit-linear-gradient(16deg,#4b90ff,#ff5546);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main .card{
+  display: flex;
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  gap: 20px;
+  /* padding-left: 50%; */
+  /* margin: 100px; */
+  margin-left: 260px;
+}
+
+.main .card1{
+  height: 200px;
+  width: 200px;
+  padding: 15px;
+  background-color: rgb(238, 236, 236);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.main .card img{
+  width: 35px;
+  padding: 5px;
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.main .card p{
+  color: rgb(74, 73, 73);
+  font-size: 17px;
+}
+
+.main .card1:hover{
+  background-color: rgb(213, 213, 213);
+  color: black;
+}
+
+.main-bottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 900px;
+  padding: 0px 20px;
+  margin: auto;
+}
+
+.searchbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: rgb(238, 236, 236);
+  padding: 50px;
+  border-radius: 50px;
+  height: 15px;
+  margin-left: 20%;
+  width: 120%;
+}
+
+.searchbox img{
+  width: 24px;
+  cursor: pointer;
+}
+
+.searchbox input{
+  background: transparent;
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 18px;
+}
+
+.searchbox div{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+
+.main .bottom-info{
+  font-size: 13px;
+  margin: 15px auto;
+  text-align: center;
+  font-weight: 300;
+}
