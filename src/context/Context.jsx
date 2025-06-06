@@ -1,23 +1,55 @@
-import { createContext } from "react";
-import runChat from "../config/gemini";
+import { createContext, useState } from "react";
+import runChat from "../config/Gemini"
 
-export const Context =createContext();
+export const Context = createContext();
 
-const ContextProvioder = (props)=>{
+const ContextProvider = ({ children }) => {
+  const [input, setInput] = useState("");
+  const [chatHistory, setChatHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const onSent = async(prompt) => {
-    await runChat(prompt)
-  }
+  const onSent = async (prompt) => {
+    if (!prompt.trim()) return;
+    
+    setLoading(true);
+    // Add user message to chat history
+    setChatHistory(prev => [...prev, { role: 'user', content: prompt }]);
+    setInput("");
 
-  onSent("What is react js")
-  const contextValue ={
+    try {
+      const response = await runChat(prompt);
+      // Add AI response to chat history
+      setChatHistory(prev => [...prev, { role: 'assistant', content: response }]);
+    } catch (error) {
+      console.error("Error in chat:", error);
+      setChatHistory(prev => [...prev, { 
+        role: 'assistant', 
+        content: "Sorry, I encountered an error. Please try again." 
+      }]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  }
+  const clearChat = () => {
+    setChatHistory([]);
+    setInput("");
+  };
+
+  const contextValue = {
+    input,
+    setInput,
+    chatHistory,
+    loading,
+    onSent,
+    clearChat
+  };
+
   return (
     <Context.Provider value={contextValue}>
-      {props.childern}
+      {children}
     </Context.Provider>
-  )
-}
+  );
+};
 
-export default ContextProvioder
+export default ContextProvider;
